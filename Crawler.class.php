@@ -160,17 +160,17 @@
 				$nodeA[$k]->__destruct();
 			}
 			unset($nodeA);
-			$i=$storeI+1;
-			$node=$root->childNodes($storeI+1);//课表table节点
+			//$i=$storeI+1;
+			//$node=$root->childNodes($storeI+1);//课表table节点
 			//echo $node->innertext;
-			for($i=0;$node->childNodes($i);$i++)
-			{
-				$nn=$node->childNodes($i);
-				for($j=0;$nn->childNodes($j);$j++)
-				{
-					$return['second'][$i][$j]=trim(strip_tags($nn->childNodes($j)->innertext));	
-				}
-			}
+			//for($i=0;$node->childNodes($i);$i++)
+		//	{
+			//	$nn=$node->childNodes($i);
+		//		for($j=0;$nn->childNodes($j);$j++)
+		//		{
+		//			$return['second'][$i][$j]=trim(strip_tags($nn->childNodes($j)->innertext));	
+		//		}
+		//	}
 			unset($node);
 			return $return;
 	}
