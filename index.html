@@ -1,11 +1,89 @@
-
+<!DOCTYPE html>
+<html>
+<head>
 <meta charset="utf-8"/>
-<form method="post" action="index.php">
-	<input type="text" name="username"/><br>
-    <input type="password" name="password"/><br>
-    <select name="action">
-    	<option value="score">score</option>
-        <option value="course">course</option>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css">
+<style>
+</style>
+<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+</head>
+<body>
+
+ 
+
+<div data-role="page" id="homepage">
+  <div data-role="header">
+    <a data-icon="home" href="#homepage" data-transition="slide" >首页</a>
+    <h1>智博平台</h1>
+  </div>
+  <div data-role="content">
+    <a href="#checkpage" data-role="button" data-transition="slide">查询功能</a>
+    <a href="#settings" data-role="button" data-transition="slide">设置功能</a>
+  </div>
+  <div data-role="footer" data-position="fixed">
+  </div>
+</div> 
+
+<div data-role="page" id="checkpage">
+  <div data-role="header">
+    <a data-icon="home" href="#homepage" data-transition="flip">首页</a><h1>查询板块</h1>
+  </div>
+
+  <div data-role="content"><br><br>
+  <form action="index.php" method="get">
+  	子系统账号:<input data-inline="true" type="text" id="username" name="username"/>
+	子系统密码:<input data-inline="true" type="password" id="password" name="password"/>
+    <select name="action" id="action">
+    <option value="">选择查询的项目</option>
+    <option value="score">查询分数</option>
+    <option value="course">查询课表</option>
     </select><br>
-    <input type="submit" value="submit"/>
-</form>
+	<input type="submit" value="查询！" onclick="checkForm()"/>
+   </form>
+   </div>
+   <div data-role="footer" data-position="fixed">
+  </div>
+</div>
+
+<div data-role="dialog" id="tips_dialog" data-theme="b">
+	<div data-role="header" data-theme="b">
+    <h1>提示</h1><br>
+    <div data-role="content">
+        <div id="tips">
+        </div>
+        <a data-role="button" data-rel="back">返回</a>
+    </div>
+    </div>
+</div>
+
+<div data-role="page" id="settings" data-theme="b">
+    <div data-role="header">
+    <a data-icon="home" href="#homepage" data-transition="flip" >首页</a>
+    <h1>设置</h1>
+  </div>
+  <div data-role="content">
+  </div>
+  <div data-role="footer" data-position="fixed">
+  </div>
+</div>
+
+
+</body>
+</html>
+
+<script>
+$("div[data-role=header]").attr("data-theme","b");
+$("div[data-role=footer]").attr("data-theme","b");//
+$("div[data-role=footer]").html('<center><a data-role="button" data-icon="back" data-rel="back" data-iconpos="right"><font>返回</font></a></center>');
+function checkForm(){
+	if(!$("input#username").val()||!$("input#password").val()||!$("select#action").val()){
+		$("div#tips").html("<center>有项目没有填写完成</center>");
+		window.location.href="#tips_dialog";
+		window.event.returnValue=false;
+	}
+		
+}
+</script>
+

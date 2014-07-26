@@ -92,8 +92,9 @@
 			addslashes($json),
 			time(),
 			$action,
+			md5($json)
 	);
-	mysql_query("insert into cache (user,cache,timestamp,type) values('$vars[0]','$vars[1]','$vars[2]','$vars[3]')");
+	mysql_query("insert into cache (user,cache,timestamp,type,contentMD5) values('$vars[0]','$vars[1]','$vars[2]','$vars[3]','$vars[4]')");
 	unset($c0);
 	unset($vars);
 ?>
