@@ -15,12 +15,24 @@
 
 <div data-role="page" id="homepage">
   <div data-role="header">
-    <a data-icon="home" href="#homepage" data-transition="slide" >首页</a>
+    <a data-icon="home" href="#homepage"  >首页</a>
     <h1>智博平台</h1>
   </div>
   <div data-role="content">
-    <a href="#checkpage" data-role="button" data-transition="slide">查询功能</a>
-    <a href="#settings" data-role="button" data-transition="slide">设置功能</a>
+  <ul data-role="listview" data-inset="true">
+    	<li data-role="list-divider">校园小助手</li>
+        <li><a href="#checkpage" >查询成绩或课表</a></li>
+        <li><a href="#scorepage">我的成绩单</a></li>
+        <li><a href="#coursepage">我的课程表</a></li>
+        <!--<li><a href="#locationpage" onclick="getLocation()" >获得自己当前位置</a></li>-->
+	</ul>
+	<ul data-role="listview" data-inset="true">
+    	<li data-role="list-divider">生活小助手</li>
+        <li data-icon="data-icon="star""><a href="#shoppingpage">五邑大学周边</a></li>
+        <li><a href="http://zuoche.com/touch/searincity.jspx?cityname=江门&s=五邑大学&d=">五邑地区坐车线路查询</a></li>
+        <!--<li><a href="#locationpage" onclick="getLocation()" >获得自己当前位置</a></li>-->
+	</ul>
+    <a href="#settings" data-role="button" >设置功能</a>
   </div>
   <div data-role="footer" data-position="fixed">
   </div>
@@ -28,19 +40,19 @@
 
 <div data-role="page" id="checkpage">
   <div data-role="header">
-    <a data-icon="home" href="#homepage" data-transition="flip">首页</a><h1>查询板块</h1>
+    <a data-icon="home" href="#homepage" >首页</a><h1>查询成绩或课表</h1>
   </div>
 
   <div data-role="content"><br><br>
   <form action="index.php" method="get">
-  	子系统账号:<input data-inline="true" type="text" id="username" name="username"/>
+  	子系统账号:<input data-inline="true" type="text" id="username" name="username" />
 	子系统密码:<input data-inline="true" type="password" id="password" name="password"/>
     <select name="action" id="action">
     <option value="">选择查询的项目</option>
     <option value="score">查询分数</option>
     <option value="course">查询课表</option>
     </select><br>
-	<input type="submit" value="查询！" onclick="checkForm()"/>
+	<input type="button" value="查询"   onclick="checkForm()"/>
    </form>
    </div>
    <div data-role="footer" data-position="fixed">
@@ -53,22 +65,117 @@
     <div data-role="content">
         <div id="tips">
         </div>
-        <a data-role="button" data-rel="back">返回</a>
+        <a data-role="button" data-rel="back" >返回</a>
     </div>
     </div>
 </div>
 
 <div data-role="page" id="settings" data-theme="b">
     <div data-role="header">
-    <a data-icon="home" href="#homepage" data-transition="flip" >首页</a>
+    <a data-icon="home" href="#homepage"  >首页</a>
     <h1>设置</h1>
   </div>
   <div data-role="content">
+  这里是设置页面
   </div>
   <div data-role="footer" data-position="fixed">
   </div>
 </div>
 
+<div data-role="page" id="scorepage">
+	<div data-role="header">
+    <a data-icon="home" href="#homepage"  >首页</a>
+    <h1>成绩表</h1>
+  </div>
+  <div data-role="content" id="scorecontent">
+		<h2>我的成绩表</h2>
+  <ul data-role="listview"  data-inset="true" id="scorelist">
+  	<a href="#checkpage" data-role="button" >请先到查询页面查询</a>
+  </ul>
+  </div>
+  <div data-role="footer" data-position="fixed">
+  </div>
+</div>
+
+<div data-role="page" id="coursepage">
+	<div data-role="header">
+    <a data-icon="home" href="#homepage" >首页</a>
+    <h1>课程表</h1>
+  </div>
+  <div data-role="content" id="coursecontent">
+		<h2>我的课表</h2>
+        <a href="#checkpage" data-role="button" >若无内容请先到查询页面查询</a>
+        <center>
+        <table id="coursetable" border="1" cellspacing="0">
+        
+        </table></center>
+  </div>
+  <div data-role="footer" data-position="fixed">
+  </div>
+</div>
+
+<div data-role="page" id="shoppingpage">
+	<div data-role="header">
+    <a data-icon="home" href="#homepage" >首页</a>
+    <h1>五邑大学周边</h1>
+  </div>
+  <div data-role="content" id="coursecontent">
+		<h2>五邑大学周边</h2>
+         <ul data-role="listview" data-inset="true"  data-filter="true" data-filter-placeholder="搜索 ...">
+         
+         	<li data-role="list-divider">校内</li>
+            <li><div>医务室(新宿舍楼下)</div><div style="float:right">(医疗生活)</div><br></li>
+            <li><div>美宜佳(新宿舍，即西区)</div><div style="float:right">(生活购物)</div><br></li>
+            
+            <li data-role="list-divider">北门</li>
+            <li><div>益华广场</div><div style="float:right">(购物娱乐饮食)</div><br></li>
+            <li><div>益华超市</div><div style="float:right">(购物生活)</div><br></li>
+            <li><div>丰乐市场</div><div style="float:right">(购物生活)</div><br></li>
+            <li><div>丰乐宾馆</div><div style="float:right">(生活悠闲)</div><br></li>
+            <li><div>逸豪酒店</div><div style="float:right">(生活悠闲)</div><br></li>
+            <li><div>流动空间KTV</div><div style="float:right">(生活娱乐)</div><br></li>
+            <li><div>肯德基</div><div style="float:right">(生活饮食)</div><br></li>
+            <li><div>必胜客</div><div style="float:right">(生活饮食)</div><br></li>
+            <li><div>蕉叶</div><div style="float:right">(生活饮食)</div><br></li>
+            <li><div>京华KTV(益华广场)</div><div style="float:right">(生活娱乐)</div><br></li>
+            <li><div>大地电影院(益华广场)</div><div style="float:right">(生活娱乐)</div><br></li>
+            
+            <li data-role="list-divider">南门</li>
+            <li><div>江门市人民医院</div><div style="float:right">(生活医疗)</div><br></li>
+            <li><div>江门公汽中心站(旧站)</div><div style="float:right">(交通出行)</div><br></li>
+            <li><div>电脑城</div><div style="float:right">(电脑器件)</div><br></li>
+            <li><div>东湖公园</div><div style="float:right">（休闲娱乐）</div><br></li>
+            <li><div>大家乐</div><div style="float:right">(生活饮食)</div><br></li>
+            <li><div>真功夫（电脑城）</div><div style="float:right">(生活饮食)</div><br></li>
+            <li><div>真功夫（地王广场）</div><div style="float:right">(生活饮食)</div><br></li>
+            <li><div>江门体育场</div><div style="float:right">（运动）</div><br></li>
+            <li><div>缤纷广场</div><div style="float:right">(购物娱乐饮食)</div><br></li>
+            <li><div>地王广场</div><div style="float:right">(购物娱乐饮食)</div><br></li>
+            <li><div>大地电影院(地王广场)</div><div style="float:right">(生活娱乐)</div><br></li>
+            <li><div>大昌超市(地王广场店)</div><div style="float:right">(生活购物)</div><br></li>
+            <li><div>金蓝海广场</div><div style="float:right">(购物娱乐饮食)</div><br></li>
+            <li><div>缤纷广场</div><div style="float:right">(购物娱乐饮食)</div><br></li>
+            <li><div>五邑城</div><div style="float:right">(购物娱乐饮食)</div><br></li>
+            <li><div>江门步行街</div><div style="float:right">(购物娱乐饮食)</div><br></li>
+            <li><div>麦当劳(步行街)</div><div style="float:right">(生活饮食)</div><br></li>
+            <li><div>麦当劳(东湖广场)</div><div style="float:right">(生活饮食)</div><br></li>
+            <li><div>肯德基(东湖广场)</div><div style="float:right">(生活饮食)</div><br></li>
+            <li><div>金发KTV</div><div style="float:right">(生活娱乐)</div><br></li>
+            <li><div>凯乐KTV</div><div style="float:right">(生活娱乐)</div><br></li>
+            
+            <li data-role="list-divider">西门</li>
+            <li><div>西门两旁水果店</div><div style="float:right">(生活购物)</div><br></li>
+            <li><div>华润万家超市</div><div style="float:right">(生活购物)</div><br></li>
+            <li><div>天空之城KTV</div><div style="float:right">(生活娱乐)</div><br></li>
+            <li><div>火星湖电影院</div><div style="float:right">(生活娱乐)</div><br></li>
+            <li><div>大昌超市</div><div style="float:right">(生活购物)</div><br></li>
+            <li><div>麦当劳</div><div style="float:right">(生活饮食)</div><br></li>
+            <li><div>甜味豆浆</div><div style="float:right">(生活饮食)</div><br></li>
+          </ul>
+  </div>
+  <div data-role="footer" data-position="fixed">
+  </div>
+</div>
 
 </body>
 </html>
@@ -77,13 +184,108 @@
 $("div[data-role=header]").attr("data-theme","b");
 $("div[data-role=footer]").attr("data-theme","b");//
 $("div[data-role=footer]").html('<center><a data-role="button" data-icon="back" data-rel="back" data-iconpos="right"><font>返回</font></a></center>');
+function toTipsDialog(s){
+	$("div#tips").html("<center>"+s+"</center>");
+		window.location.href="#tips_dialog";
+}
 function checkForm(){
 	if(!$("input#username").val()||!$("input#password").val()||!$("select#action").val()){
-		$("div#tips").html("<center>有项目没有填写完成</center>");
-		window.location.href="#tips_dialog";
-		window.event.returnValue=false;
+		toTipsDialog("有项目没有填写完成");
+		return;
 	}
-		
+	else{
+		htmlobj=$.post("index.php",{
+			username:$("input#username").val(),
+			password:$("input#password").val(),
+			action:$("select#action").val()
+		},function(d,t,jh){
+			try{
+				$obj=JSON.parse(jh.responseText);
+			}
+			catch(excepetion){
+				alert("账号或密码错误");
+				return;
+			}
+			if($("select#action").val()=="score"){
+				$("ul#scorelist").html("");
+				$scoreObj=$obj['score'];
+				var numerator=0;
+				var denominator=0;
+				for(var x1 in $scoreObj){
+					var li=document.createElement("li");
+					$(li).attr('data-role',"list-divider");
+					$(li).html($scoreObj[x1][0]);
+					$("ul#scorelist").get(0).appendChild(li);
+					for(var x2 in $scoreObj[x1][1])
+					{
+						var li=document.createElement("li");
+						if(($scoreObj[x1][1][x2][5]!="重修")&&($scoreObj[x1][1][x2][2]=="必修"||$scoreObj[x1][1][x2][2]=="选修"))
+						{
+							var score=0;
+							var str=$scoreObj[x1][1][x2][4];
+							if(str=="优秀")
+								score=4.5;
+							else if(str=="良好")
+								score=3.5;
+							else if(str=="中等")
+								score=2.5;
+							else if(str=="及格")
+								score=1;
+							else if(str=="不及格")
+								score=0;
+							else if(str=="旷考")
+								score=0;
+							else
+							{
+									if($scoreObj[x1][1][x2][4]<60)
+										score=0;
+									else
+										score=($scoreObj[x1][1][x2][4]-50)/10;
+							}
+							numerator=numerator+(score*$scoreObj[x1][1][x2][3]);
+							denominator=denominator+parseFloat($scoreObj[x1][1][x2][3]);
+						}
+						$(li).html("<div><div>"+$scoreObj[x1][1][x2][1]+'</div><div style="float:right">'+$scoreObj[x1][1][x2][4]+"</div><br><br></div>");
+						$("ul#scorelist").get(0).appendChild(li);
+					}
+					if(x1%2==1)
+					{
+						var sum=numerator/denominator;
+						var li=document.createElement("li");
+						$(li).attr('data-role',"list-divider");
+						$(li).html('<div><div>本年度绩点</div><div style="float:right"><center>'+sum+"</center><center>(仅供参考)</center></div><br><br></div>");
+						$("ul#scorelist").get(0).appendChild(li);
+						numerator=0;
+						denominator=0;
+					}
+				}
+				window.location.href="#scorepage";
+				return;
+			}
+			else if($("select#action").val()=="course"){
+				$("table#coursetable").html(" ");
+				for(var x0 in $obj){
+					var tr=document.createElement("tr");
+					$subobj=$obj[x0];
+					for(var x1 in $subobj){
+						if(x1>5)
+							break;
+						var td=document.createElement("td");
+						$strArr=$subobj[x1].split(" ");
+						var s="";
+						for(var k in $strArr){
+							s=s+"<center>"+$strArr[k]+"</center>";
+						}
+						td.innerHTML=s;
+						tr.appendChild(td);
+					}
+					document.getElementById("coursetable").appendChild(tr);
+				}
+				window.location.href="#coursepage";
+				return false;
+			}
+		})
+	}
 }
 </script>
 

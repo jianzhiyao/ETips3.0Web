@@ -1,6 +1,8 @@
 <?php
 	include "httpclient.php";
 	require_once "phpDOMpaser/simple_html_dom.php";
+	define("USERNAME","3112003058");
+	define("PASSWORD","739319867");
 	class Crawler{
 		private $Url;
 		private $State;
@@ -54,7 +56,16 @@
 				$this->VificationCodeId=>$this->VificationCode
 			);
 			$this->hc->post($Url,$form,"http://jwc.wyu.edu.cn/student/body.htm");
-			//echo $this->Header=$this->hc->__get("header");
+			if(strlen($this->Header=$this->hc->__get("header"))<=190)
+			{
+				$form=array(//用正确的账号密码登陆，防止ip被封
+					$this->UsernameId=>USERNAME,
+					$this->PwdId=>PASSWORD,
+					$this->VificationCodeId=>$this->VificationCode
+				);
+				$this->hc->post($Url,$form,"http://jwc.wyu.edu.cn/student/body.htm");
+				die();
+			}
 		}
 		private function getCourse($Url)
 		{
