@@ -101,6 +101,18 @@
 			unset($ScoreTable);
 			return $ScoreArray;
 		}
+		static function getCetScoreTable($zkzh,$xm){
+			$hc=new httpclient(true);
+			$hc->get("http://www.chsi.com.cn/cet/query",array("zkzh"=>$zkzh,"xm"=>$xm),"http://www.chsi.com.cn/cet/");
+			$content=$hc->__get("recv");
+			$html=new simple_html_dom($content);
+			$table=$html->getElementsByTagName("table",1);
+			$returnString=$table->__toString();
+			if(strpos($returnString,"考试类别"))
+				return $table->__toString();
+			else
+				return "";
+		}
 	}
 	function paserCourseDOM($root){	
 		$i=0;
@@ -185,5 +197,6 @@
 			unset($node);
 			return $return;
 	}
+	
 	
 ?>

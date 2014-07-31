@@ -2,6 +2,9 @@
 <html>
 <head>
 <meta charset="utf-8"/>
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css">
 <style>
@@ -16,20 +19,24 @@
 <div data-role="page" id="homepage">
   <div data-role="header">
     <a data-icon="home" href="#homepage"  >首页</a>
-    <h1>智博平台</h1>
+    <h1>博智平台</h1>
   </div>
   <div data-role="content">
   <ul data-role="listview" data-inset="true">
     	<li data-role="list-divider">校园小助手</li>
+        <li><a href="#newspage" >校内资讯</a></li>
         <li><a href="#checkpage" >查询成绩或课表</a></li>
         <li><a href="#scorepage">我的成绩单</a></li>
         <li><a href="#coursepage">我的课程表</a></li>
+        <li><a href="#checkcetpage">查询最新的四六级成绩</a></li>
         <!--<li><a href="#locationpage" onclick="getLocation()" >获得自己当前位置</a></li>-->
 	</ul>
 	<ul data-role="listview" data-inset="true">
     	<li data-role="list-divider">生活小助手</li>
         <li data-icon="data-icon="star""><a href="#shoppingpage">五邑大学周边</a></li>
-        <li><a href="http://zuoche.com/touch/searincity.jspx?cityname=江门&s=五邑大学&d=">五邑地区坐车线路查询</a></li>
+        <li><a href="#buspage">五邑地区坐车线路查询</a></li>
+		<li><a href="http://i.waimai.meituan.com/home/ws02t6q0c442">五邑大学周边外卖</a></li>
+		<li><a href="http://tuan.baidu.com/jiangmen/">江门周边团购</a></li>
         <!--<li><a href="#locationpage" onclick="getLocation()" >获得自己当前位置</a></li>-->
 	</ul>
     <a href="#settings" data-role="button" >设置功能</a>
@@ -54,6 +61,36 @@
     </select><br>
 	<input type="button" value="查询"   onclick="checkForm()"/>
    </form>
+   </div>
+   <div data-role="footer" data-position="fixed">
+  </div>
+</div>
+
+<div data-role="page" id="checkcetpage">
+  <div data-role="header">
+    <a data-icon="home" href="#homepage" >首页</a><h1>查询四六级成绩</h1>
+  </div>
+
+  <div data-role="content"><br><br>
+  <center>邑大学子欢迎关注公众号wyubozhi,获得更多服务<br><br>此页面只能查询最新一次的CET成绩</center><br><br>
+  <form action="" method="get">
+  	准考证号:<input data-inline="true" type="text" id="zkzh" name="zkzh" />
+	姓　　名:<input data-inline="true" type="text" id="xm" name="xm"/>
+    <center>姓名超过3个字，可只输入前3个</center>
+	<input type="button" value="查询"   onclick="getCetScore()"/>
+    <center>欢迎转发到朋友圈</center>
+   </form>
+   </div>
+   <div data-role="footer" data-position="fixed">
+  </div>
+</div>
+
+<div data-role="page" id="cetscorepage">
+  <div data-role="header">
+    <a data-icon="home" href="#homepage" >首页</a><h1>四六级成绩</h1>
+  </div>
+  <div data-role="content" id="cetscorecontent">
+  <br><br><br><br><br><br><a href="#checkcetpage" data-role="button">若无内容请先到查询页面查询</a>
    </div>
    <div data-role="footer" data-position="fixed">
   </div>
@@ -104,11 +141,61 @@
   </div>
   <div data-role="content" id="coursecontent">
 		<h2>我的课表</h2>
-        <a href="#checkpage" data-role="button" >若无内容请先到查询页面查询</a>
+        <a href="#checkpage" data-role="button">若无内容请先到查询页面查询</a>
         <center>
         <table id="coursetable" border="1" cellspacing="0">
         
         </table></center>
+  </div>
+  <div data-role="footer" data-position="fixed">
+  </div>
+</div>
+
+<div data-role="page" id="buspage">
+	<div data-role="header">
+    <a data-icon="home" href="#homepage" >首页</a>
+    <h1>公交线路查询</h1>
+  </div>
+  <div data-role="content" id="coursecontent">
+		<h2>公交线路查询</h2>
+        <form action="http://zuoche.com/touch/searchplan.jspx" method="get">
+        		城&nbsp;&nbsp;市:<br>
+                <input type="text" name="c1" value="江门"/>
+        		出发地:<br>
+        		<input type="text" name="s"/>
+                目的地:<br>
+                <input type="text" name="d"/>
+                <input type="hidden" name="time" value="4096"/>
+                <input type="hidden" name="op" value="inner"/>
+                <input type="submit" value="查询"/>
+        </form>
+  </div>
+  <div data-role="footer" data-position="fixed">
+  </div>
+</div>
+
+<div data-role="page" id="newspage">
+	<div data-role="header">
+    <a data-icon="home" href="#homepage" >首页</a>
+    <h1>最新资讯</h1>
+  </div>
+  <div data-role="content" id="newstitles">
+  		(若有学生组织需要发布新闻，联系邮箱739319867@qq.com,免费发布学生活动信息)
+  		<ul data-role="listview" data-inset="true"  id="newslist">
+        	<li data-role="list-divider">最新资讯</li>
+        </ul>
+  </div>
+  <div data-role="footer" data-position="fixed">
+  </div>
+</div>
+
+<div data-role="page" id="newscontentpage">
+	<div data-role="header">
+    <a data-icon="home" href="#homepage" >首页</a>
+    <h1 id="newstitle">最新资讯</h1>
+  </div>
+  <div data-role="content" id="newscontent">
+  <a href="#newspage" data-role="button">请进入新闻列表</a>
   </div>
   <div data-role="footer" data-position="fixed">
   </div>
@@ -124,27 +211,39 @@
          <ul data-role="listview" data-inset="true"  data-filter="true" data-filter-placeholder="搜索 ...">
          
          	<li data-role="list-divider">校内</li>
-            <li><div>医务室(新宿舍楼下)</div><div style="float:right">(医疗生活)</div><br></li>
+            <li><div>医务室(新宿舍楼下)</div><div style="float:right">(生活医疗)</div><br></li>
             <li><div>美宜佳(新宿舍，即西区)</div><div style="float:right">(生活购物)</div><br></li>
+			<li><div>广发银行(南主楼楼下)</div><div style="float:right">(生活金融)</div><br></li>
+			<li><div>联通服务厅(开网续网业务)<br>(南主楼楼下)</div><div style="float:right">(校园生活)</div><br></li>
+			<li><div>书吧(南主楼楼下)</div><div style="float:right">(校园生活)</div><br></li>
             
             <li data-role="list-divider">北门</li>
+			<li><div>中信银行</div><div style="float:right">(生活金融)</div><br></li>
+			<li><div>中国建设银行</div><div style="float:right">(生活金融)</div><br></li>
+			<li><div>江门市第二人民医院</div><div style="float:right">(生活医疗)</div><br></li>
             <li><div>益华广场</div><div style="float:right">(购物娱乐饮食)</div><br></li>
-            <li><div>益华超市</div><div style="float:right">(购物生活)</div><br></li>
-            <li><div>丰乐市场</div><div style="float:right">(购物生活)</div><br></li>
+            <li><div>益华超市</div><div style="float:right">(生活购物)</div><br></li>
+            <li><div>丰乐市场</div><div style="float:right">(生活购物)</div><br></li>
             <li><div>丰乐宾馆</div><div style="float:right">(生活悠闲)</div><br></li>
             <li><div>逸豪酒店</div><div style="float:right">(生活悠闲)</div><br></li>
             <li><div>流动空间KTV</div><div style="float:right">(生活娱乐)</div><br></li>
-            <li><div>肯德基</div><div style="float:right">(生活饮食)</div><br></li>
-            <li><div>必胜客</div><div style="float:right">(生活饮食)</div><br></li>
-            <li><div>蕉叶</div><div style="float:right">(生活饮食)</div><br></li>
+            <li><div>肯德基(益华广场)</div><div style="float:right">(生活饮食)</div><br></li>
+            <li><div>必胜客(益华广场)</div><div style="float:right">(生活饮食)</div><br></li>
+            <li><div>蕉叶(益华广场)</div><div style="float:right">(生活饮食)</div><br></li>
             <li><div>京华KTV(益华广场)</div><div style="float:right">(生活娱乐)</div><br></li>
             <li><div>大地电影院(益华广场)</div><div style="float:right">(生活娱乐)</div><br></li>
+			<li><div>17.5影城(电影院)(双龙广场)</div><div style="float:right">(生活娱乐)</div><br></li>
             
             <li data-role="list-divider">南门</li>
+			<li><div>工商银行</div><div style="float:right">(生活金融)</div><br></li>
+			<li><div>中国银行</div><div style="float:right">(生活金融)</div><br></li>
             <li><div>江门市人民医院</div><div style="float:right">(生活医疗)</div><br></li>
+			<li><div>横岭市场</div><div style="float:right">(生活购物)</div><br></li>
+			<li><div>胜利市场</div><div style="float:right">(生活购物)</div><br></li>
             <li><div>江门公汽中心站(旧站)</div><div style="float:right">(交通出行)</div><br></li>
             <li><div>电脑城</div><div style="float:right">(电脑器件)</div><br></li>
             <li><div>东湖公园</div><div style="float:right">（休闲娱乐）</div><br></li>
+			<li><div>东湖影剧院(电影院)</div><div style="float:right">（生活娱乐）</div><br></li>
             <li><div>大家乐</div><div style="float:right">(生活饮食)</div><br></li>
             <li><div>真功夫（电脑城）</div><div style="float:right">(生活饮食)</div><br></li>
             <li><div>真功夫（地王广场）</div><div style="float:right">(生活饮食)</div><br></li>
@@ -184,9 +283,52 @@
 $("div[data-role=header]").attr("data-theme","b");
 $("div[data-role=footer]").attr("data-theme","b");//
 $("div[data-role=footer]").html('<center><a data-role="button" data-icon="back" data-rel="back" data-iconpos="right"><font>返回</font></a></center>');
+document.ready=function(){//获得新闻标题
+	$.get("dealnews.php",{action:"getnewslist"},function(data,textStatus,jhr){
+		var $newsObj;
+		$newsObj=JSON.parse(jhr.responseText);
+		
+		for(var x in $newsObj){
+			$li=document.createElement("li");
+			$JQli=$($li);
+			$JQli.attr("name","newstitle");
+			$JQli.attr("value",$newsObj[x].id);
+			$JQli.attr("onclick","toNewsContent(this)");
+			$JQli.attr("class","ui-link-inherit ui-li ui-li-static ui-btn-up-c ui-last-child");//
+			$JQli.html($newsObj[x].title);
+			$("ul#newslist").get(0).appendChild($li);
+		}
+	});
+};
+function getCetScore(){
+	if(!$("input#zkzh").val()||!$("input#xm").val()){
+		toTipsDialog("有项目没有填写完成");
+		return;
+	}
+	$.get("getCetScore.php",
+		{zkzh:$("input#zkzh").val(),xm:$("input#xm").val()},
+		function(data,textStatus,jhr){
+			if(jhr.responseText.match("table"))
+				$returnText=jhr.responseText;
+			else
+				$returnText='<center><h1><font color="red">查不到成绩<br>请检查填写的资料或稍后再试</center></h1></center>';
+			$("div#cetscorecontent").html("");
+			$("div#cetscorecontent").html("<center>此页面不支持转发</center><br><br><br><br><br>"+$returnText);
+			window.location.href="#cetscorepage";
+		}
+	);
+}
+function toNewsContent(obj){
+	$.get("dealnews.php",{id:obj.value,action:"getnewscontent"},function(data,textStatus,jhr){
+		$newsContentObj=JSON.parse(jhr.responseText);
+		$("div#newscontent").html("<center>本页面不支持转发<br>欢迎关注微信公众号wyubozhi获得更多服务</center><br>"+$newsContentObj.content);
+		$("h1#newstitle").html($newsContentObj.title);
+		window.location.href="#newscontentpage";
+	});
+}
 function toTipsDialog(s){
 	$("div#tips").html("<center>"+s+"</center>");
-		window.location.href="#tips_dialog";
+	window.location.href="#tips_dialog";
 }
 function checkForm(){
 	if(!$("input#username").val()||!$("input#password").val()||!$("select#action").val()){
@@ -260,7 +402,6 @@ function checkForm(){
 					}
 				}
 				window.location.href="#scorepage";
-				return;
 			}
 			else if($("select#action").val()=="course"){
 				$("table#coursetable").html(" ");
@@ -282,7 +423,6 @@ function checkForm(){
 					document.getElementById("coursetable").appendChild(tr);
 				}
 				window.location.href="#coursepage";
-				return false;
 			}
 		})
 	}
