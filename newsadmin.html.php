@@ -1,7 +1,7 @@
 <?php
 	require_once "mysqlTool.php";
-	isset($_REQUEST['jianzhiyao']) or die("nousername");
-	if($_REQUEST['jianzhiyao']!="wosh1jianzhiyao")
+	isset($_REQUEST['xxxx']) or die("nousername");
+	if($_REQUEST['xxxx']!="xxxx")
 		die();
 	session_start();
 	$_SESSION['status']="yes";
@@ -124,10 +124,11 @@
 <input type="hidden" name="action" value="add"/>
 </form>
 <?php
-	$sql="select * from news order by id";
+	$sql="select * from news order by id desc";
 	$res=mysql_query($sql) or die(mysql_error());
 	while($row=mysql_fetch_assoc($res)){
 		echo '<div style="border:1px solid black;">
+		阅读量：'.$row['click_amount'].'
 		新闻标题:<h1>'.$row['title'].'</h1>(<a href="dealnews.php?action=delete&id='.$row['id'].'">删除新闻</a>)<br>
 		新闻内容:'.$row['content'].'<br>
 		</div>';

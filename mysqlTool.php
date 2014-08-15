@@ -1,10 +1,10 @@
 <?php
 	include "class.MySQL.php";
 	$database="ETipsCache";//database
-	$username="root";
-	$password="123456";
-	$hostname="localhost";
-	$table="cache";
+	$username="数据库用户名";
+	$password="数据库密码";
+	$hostname="服务器名";
+	$table="数据表";
 	$port=3306;
 // 	$database=SAE_MYSQL_DB;//database
 // 	$username=SAE_MYSQL_USER;

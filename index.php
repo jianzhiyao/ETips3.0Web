@@ -41,7 +41,7 @@
 		}
 		else
 		{
-			echo "delete";
+			//echo "delete";
 			mysql_query("delete from $table where id='$result[id]'") or die(mysql_error());
 		}
 	}//echo "not cache";
@@ -69,7 +69,8 @@
 			md5($json),
 			$pwd
 	);
-	mysql_query("insert into cache (user,cache,timestamp,type,contentMD5,pwd) values('$vars[0]','$vars[1]','$vars[2]','$vars[3]','$vars[4]','$vars[5]')");
+	$sql="insert into cache (user,cache,timestamp,type,contentMD5,pwd) values('$vars[0]','$vars[1]','$vars[2]','$vars[3]','$vars[4]','$vars[5]')";
+	mysql_query($sql);
 	unset($c0);
 	unset($vars);
 ?>

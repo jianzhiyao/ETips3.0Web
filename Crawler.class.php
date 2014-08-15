@@ -1,8 +1,8 @@
 <?php
 	include "httpclient.php";
 	require_once "phpDOMpaser/simple_html_dom.php";
-	define("USERNAME","3112003058");
-	define("PASSWORD","739319867");
+	define("USERNAME","一定对的子系统用户名");
+	define("PASSWORD","一定对的密码");
 	class Crawler{
 		private $Url;
 		private $State;

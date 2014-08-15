@@ -37,7 +37,9 @@
 			$res=mysql_query($sql) or die(mysql_error());
 			$row=array();
 			if($row=mysql_fetch_assoc($res)){
-				echo json_encode($row);exit;
+				echo json_encode($row);
+				mysql_query("update news set click_amount=click_amount+1 where id='$id'");
+				exit;
 			}
 			echo json_encode($row);exit;
 		};break;
